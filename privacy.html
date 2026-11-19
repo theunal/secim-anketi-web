@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gizlilik Politikası — Seçim Anketi</title>
+  <meta name="description" content="Seçim Anketi gizlilik politikası: toplanan veriler, oy tercihinin kimlikten ayrılması, KVKK hakları ve veri güvenliği." />
+  <style>
+    :root { --bg:#F7F8FA; --surface:#FFF; --ink:#111827; --muted:#6B7280; --border:#E5E7EB; --primary:#1E3A5F; --accent:#0E7490; --soft:#CFFAFE; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:system-ui,-apple-system,"Segoe UI",sans-serif; background:var(--bg); color:var(--ink); line-height:1.75; }
+    .wrap { max-width:820px; margin:0 auto; padding:0 20px; }
+    header { background:var(--primary); color:#fff; padding:48px 0 40px; }
+    header h1 { font-size:34px; font-weight:800; }
+    header p { color:#CFDCEA; margin-top:10px; }
+    main { padding:8px 0 40px; }
+    article { background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:34px; margin-top:28px; }
+    h2 { font-size:21px; font-weight:700; margin:30px 0 10px; color:var(--primary); }
+    h2:first-child { margin-top:0; }
+    h3 { font-size:16px; font-weight:600; margin:18px 0 6px; }
+    p, li { color:#374151; font-size:15px; }
+    ul, ol { margin:10px 0 10px 22px; }
+    li { margin-bottom:6px; }
+    .meta { background:var(--soft); border-radius:12px; padding:16px 18px; font-size:14px; }
+    .highlight { background:#FFFBEB; border:1px solid #FDE68A; color:#92400E; padding:16px 18px; border-radius:12px; margin:16px 0; }
+    table { width:100%; border-collapse:collapse; margin:14px 0; font-size:14px; }
+    th, td { border:1px solid var(--border); padding:10px 12px; text-align:left; vertical-align:top; }
+    th { background:var(--bg); font-weight:600; }
+    a { color:var(--accent); font-weight:600; }
+    footer { padding:30px 0 60px; color:var(--muted); font-size:14px; }
+    code { background:var(--bg); padding:1px 6px; border-radius:5px; font-size:13px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1>Gizlilik Politikası</h1>
+      <p>Seçim Anketi · Son güncelleme: 20 Kasım 2026 · Versiyon 1.0</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <article>
+      <div class="meta">
+        <strong>Özet:</strong> Seçim Anketi, siyasi görüşünüzü (özel nitelikli kişisel veri) korumak için gizliliği tasarımın merkezine almıştır. Oy tercihiniz ile kimliğiniz arasında teknik olarak hiçbir bağ kurulamaz. E-posta adresiniz, T.C. kimlik numaranız, ham cihaz kimliğiniz veya hassas konumunuz istenmez veya saklanmaz.
+      </div>
+
+      <h2>1. Veri sorumlusu</h2>
+      <p>Bu uygulamanın veri sorumlusu "Seçim Anketi"dir. Gizlilikle ilgili talepleriniz için uygulama içindeki <strong>Ayarlar → Verilerimi sil</strong> ekranını veya iletişim adresimizi kullanabilirsiniz.</p>
+
+      <h2>2. Toplanan veriler ve amaçları</h2>
+      <table>
+        <tr><th>Veri</th><th>Nasıl saklanır?</th><th>Amaç</th></tr>
+        <tr><td>Google / Apple hesap kimliği</td><td>Yalnızca HMAC-SHA256 hash'i (sunucu sırrı ile). Ham kimlik numarası saklanmaz.</td><td>Giriş yapıldığını doğrulamak, aynı kişinin dönemde birden fazla oy kullanmasını engellemek.</td></tr>
+        <tr><td>E-posta adresi</td><td><strong>Saklanmaz.</strong></td><td>—</td></tr>
+        <tr><td>Cihaz tanımlayıcısı</td><td>Yalnızca HMAC-SHA256 hash'i. Ham cihaz kimliği saklanmaz.</td><td>Cihaz başına tek oy kuralını uygulamak (Faz 5'te Play Integrity / App Attest ile güçlendirilecek).</td></tr>
+        <tr><td>Seçtiğiniz il</td><td>Plaka kodu olarak saklanır.</td><td>İl bazlı sonuçları göstermek.</td></tr>
+        <tr><td>Oy tercihiniz</td><td>Anonim <code>ballots</code> tablosunda; kimliğe bağlanamaz.</td><td>Toplu sonuçları hesaplamak.</td></tr>
+        <tr><td>İsteğe bağlı demografik bilgiler (yaş grubu, cinsiyet, önceki oy)</td><td>Anonim oy kaydıyla birlikte, k-anonimlik eşiğiyle korunur.</td><td>Toplu kırılımlar için; kimliğinizle ilişkilendirilmez.</td></tr>
+        <tr><td>Rıza kaydı</td><td>Onay tarihi ve metin sürümü.</td><td>Açık rızanızın kanıtı.</td></tr>
+      </table>
+      <p><strong>İstenmeyen veriler:</strong> T.C. kimlik numaranız, tam adınız, doğum tarihiniz, GPS konumunuz, telefon numaranız veya SMS doğrulama kodu hiçbir zaman istenmez veya saklanmaz.</p>
+
+      <h2>3. Oy tercihinin kimlikten ayrılması</h2>
+      <p>Siyasi görüş, 6698 sayılı KVKK m.6 kapsamında özel nitelikli kişisel veridir. Bu nedenle veritabanı yapısı şu şekilde tasarlanmıştır:</p>
+      <ul>
+        <li><strong>Kimlik tarafı</strong> (<code>voters</code>): HMAC hash'leri, il, güven skoru. Hangi partiye oy verildiği bilgisini <strong>içermez</strong>.</li>
+        <li><strong>Katılım kaydı</strong> (<code>participations</code>): Yalnızca "bu kişi bu dönemde oy kullandı mı" bilgisini tutar. Tercihi içermez.</li>
+        <li><strong>Oy tarafı</strong> (<code>ballots</code>): Parti tercihi, il, demografik kırılımlar. <strong>voter_id yoktur</strong>, kimlik tarafına hiçbir foreign key yoktur, milisaniye hassasiyetli zaman damgası yoktur.</li>
+      </ul>
+      <div class="highlight">
+        <strong>Sonuç:</strong> Veritabanında bir oy satırından ("ballot") oyu veren kişiye ulaşmanın hiçbir teknik yolu yoktur. Bu, bir politika taahhüdü değil, şema düzeyinde zorunlu kılınmış bir kısıttır.
+      </div>
+
+      <h2>4. k-anonimlik</h2>
+      <p>Küçük gruplarda tek bir kişinin tercihinin tahmin edilmesini önlemek için, bir il veya demografik kırılımda toplam oy sayısı eşik değerin (varsayılan 30) altındaysa API sonuç döndürmez ve "Yeterli veri yok" mesajı gösterir.</p>
+
+      <h2>5. Loglar ve güvenlik</h2>
+      <ul>
+        <li>Loglarda token, e-posta, ham kimlik numarası, cihaz kimliği veya IP adresi düz yazılmaz.</li>
+        <li>IP adresi yalnızca kısa süreli hız sınırı (rate limiting) için kullanılır ve loglara yazılmaz.</li>
+        <li>Tüm sırlar (HMAC sırrı, JWT sırrı, OAuth istemci bilgileri) ortam değişkenlerinde tutulur, koda gömülmez.</li>
+        <li>Web'de erişim ve yenileme token'ları bellekte tutulur; localStorage'a yazılmaz. Mobil cihazda işletim sisteminin güvenli depolaması (Keychain / Keystore) kullanılır.</li>
+      </ul>
+
+      <h2>6. Çerezler ve üçüncü taraflar</h2>
+      <p>Giriş işlemi Google ve Apple OAuth servisleri üzerinden yapılır. Bu servisler kendi gizlilik politikalarına tabidir. Uygulamamız reklam veya analiz amaçlı üçüncü taraf çerezleri kullanmaz.</p>
+
+      <h2>7. Veri saklama süresi</h2>
+      <ul>
+        <li>Kimlik verileri, hesabınızı silene kadar saklanır.</li>
+        <li>Anonim oy verileri, kişiye ait olmadığı için toplu istatistik amacıyla saklanmaya devam eder.</li>
+      </ul>
+
+      <h2>8. KVKK kapsamındaki haklarınız</h2>
+      <p>6698 sayılı Kanun'un 11. maddesi kapsamında aşağıdaki haklara sahipsiniz:</p>
+      <ul>
+        <li>Verilerinizin işlenip işlenmediğini öğrenme, işlenmişse bilgi alma,</li>
+        <li>İşleme amacına aykırı kullanıldığını düşünüyorsanız itiraz etme,</li>
+        <li>Verilerinizin düzeltilmesini veya silinmesini isteme,</li>
+        <li>Rızanızı geri çekme.</li>
+      </ul>
+      <p>Bu hakları uygulama içindeki <strong>Ayarlar → Verilerimi sil</strong> ekranından kullanabilirsiniz. <strong>Hesabınızı sildiğinizde</strong> kimlik verileriniz (voters satırı, katılım ve rıza kayıtları) silinir. Anonim oyunuz ise zaten kimliğinizle eşleştirilemediği için saklanmaya devam eder.</p>
+
+      <h2>9. Açık rıza</h2>
+      <p>İlk girişte siyasi görüşünüzün işlenmesi için açık rızanız alınır. Rıza verilmeden oy kullanılamaz. Rıza metninin güncellenmesi durumunda yeni sürüm için yeniden onay istenir.</p>
+
+      <h2>10. Değişiklikler</h2>
+      <p>Bu politika güncellendiğinde "Son güncelleme" tarihi değiştirilir. Önemli değişiklikler uygulama içinde duyurulur.</p>
+
+      <h2>11. İletişim</h2>
+      <p>Gizlilikle ilgili sorularınız için uygulama içindeki ayarlar bölümünden veya home page'de belirtilen iletişim adresinden bize ulaşabilirsiniz.</p>
+    </article>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      © 2026 Seçim Anketi · <a href="/">Ana Sayfa</a> · Bu metin hukuki görüş değildir; yayın öncesi uzman gözden geçirmesi önerilir.
+    </div>
+  </footer>
+</body>
+</html>
