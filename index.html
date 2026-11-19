@@ -1,78 +1,256 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Seçim Anketi — Türkiye'nin Nabzı</title>
-  <meta name="description" content="Seçim Anketi, Türkiye'deki seçmenlerin anonim olarak oy tercihlerini paylaştığı, sonuçların il bazında ve Türkiye genelinde gösterildiği bağımsız bir anket uygulamasıdır." />
+  <meta name="description"
+    content="Seçim Anketi, Türkiye'deki seçmenlerin anonim olarak oy tercihlerini paylaştığı, sonuçların il bazında ve Türkiye genelinde gösterildiği bağımsız bir anket uygulamasıdır." />
+
+  <!--
+    GOOGLE SEARCH CONSOLE DOĞRULAMA ETİKETİ
+    Aşağıdaki content="" içini, Google Search Console'da "HTML etiketi" yöntemini
+    seçtiğinde sana verilen content değeriyle değiştir. Sonra dosyayı GitHub'a
+    push et ve Search Console'da "Doğrula"ya bas.
+    Örnek: <meta name="google-site-verification" content="AbCdEf123456..." />
+  -->
+  <meta name="google-site-verification" content="_SFlXPrKTHH0BVyi_5xDcysVgU3ul79zrvzWPFCcTCU" />
   <style>
     :root {
-      --bg: #F7F8FA; --surface: #FFFFFF; --ink: #111827; --muted: #6B7280;
-      --border: #E5E7EB; --primary: #1E3A5F; --accent: #0E7490; --accent-soft: #CFFAFE;
+      --bg: #F7F8FA;
+      --surface: #FFFFFF;
+      --ink: #111827;
+      --muted: #6B7280;
+      --border: #E5E7EB;
+      --primary: #1E3A5F;
+      --accent: #0E7490;
+      --accent-soft: #CFFAFE;
       --success: #15803D;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; background: var(--bg); color: var(--ink); line-height: 1.65; }
-    .wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; }
-    header { background: var(--primary); color: #fff; padding: 64px 0 56px; }
-    header .pulse { width: 56px; height: 56px; border-radius: 28px; background: var(--accent); margin-bottom: 20px; position: relative; }
-    header .pulse::after { content: ""; position: absolute; inset: 16px; border-radius: 8px; background: #fff; }
-    h1 { font-size: 40px; line-height: 1.2; font-weight: 800; letter-spacing: -0.5px; }
-    header p { font-size: 19px; margin-top: 16px; color: #D9E6F2; max-width: 620px; }
-    .badge { display: inline-block; background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.25); padding: 6px 14px; border-radius: 999px; font-size: 13px; margin-bottom: 20px; }
-    section { padding: 52px 0; border-bottom: 1px solid var(--border); }
-    h2 { font-size: 26px; font-weight: 700; margin-bottom: 16px; }
-    h3 { font-size: 17px; font-weight: 600; margin: 22px 0 6px; }
-    p { color: #374151; margin-bottom: 12px; }
-    .muted { color: var(--muted); font-size: 15px; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 18px; margin-top: 24px; }
-    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 24px; }
-    .card .n { width: 34px; height: 34px; border-radius: 10px; background: var(--accent-soft); color: var(--accent); font-weight: 700; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
-    .notice { background: #FFFBEB; border: 1px solid #FDE68A; color: #92400E; padding: 18px 20px; border-radius: 14px; font-size: 15px; margin-top: 20px; }
-    .privacy { background: var(--accent-soft); border-radius: 16px; padding: 24px; }
-    a { color: var(--accent); font-weight: 600; }
-    footer { padding: 40px 0 60px; color: var(--muted); font-size: 14px; }
-    footer a { margin: 0 12px; }
-    .store { display: inline-block; background: var(--primary); color: #fff; padding: 12px 22px; border-radius: 12px; text-decoration: none; font-weight: 600; margin-top: 8px; }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+    }
+
+    .wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    header {
+      background: var(--primary);
+      color: #fff;
+      padding: 64px 0 56px;
+    }
+
+    header .pulse {
+      width: 56px;
+      height: 56px;
+      border-radius: 28px;
+      background: var(--accent);
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    header .pulse::after {
+      content: "";
+      position: absolute;
+      inset: 16px;
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    h1 {
+      font-size: 40px;
+      line-height: 1.2;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    header p {
+      font-size: 19px;
+      margin-top: 16px;
+      color: #D9E6F2;
+      max-width: 620px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+
+    section {
+      padding: 52px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    h2 {
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    h3 {
+      font-size: 17px;
+      font-weight: 600;
+      margin: 22px 0 6px;
+    }
+
+    p {
+      color: #374151;
+      margin-bottom: 12px;
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 24px;
+    }
+
+    .card .n {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+    }
+
+    .notice {
+      background: #FFFBEB;
+      border: 1px solid #FDE68A;
+      color: #92400E;
+      padding: 18px 20px;
+      border-radius: 14px;
+      font-size: 15px;
+      margin-top: 20px;
+    }
+
+    .privacy {
+      background: var(--accent-soft);
+      border-radius: 16px;
+      padding: 24px;
+    }
+
+    a {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    footer {
+      padding: 40px 0 60px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    footer a {
+      margin: 0 12px;
+    }
+
+    .store {
+      display: inline-block;
+      background: var(--primary);
+      color: #fff;
+      padding: 12px 22px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 8px;
+    }
   </style>
 </head>
+
 <body>
   <header>
     <div class="wrap">
       <div class="pulse"></div>
       <span class="badge">Bağımsız · Anonim · Temsili Anket</span>
       <h1>Seçim Anketi</h1>
-      <p>Türkiye'deki seçmenlerin "bugün seçim olsa hangi partiye oy verirsin?" sorusuna anonim olarak cevap verdiği; sonuçların il bazında ve Türkiye genelinde canlı gösterildiği bir anket uygulaması.</p>
+      <p>Türkiye'deki seçmenlerin "bugün seçim olsa hangi partiye oy verirsin?" sorusuna anonim olarak cevap verdiği;
+        sonuçların il bazında ve Türkiye genelinde canlı gösterildiği bir anket uygulaması.</p>
     </div>
   </header>
 
   <main class="wrap">
     <section>
       <h2>Uygulamanın amacı</h2>
-      <p>Seçim Anketi, siyasi tercihlerin yalnızca <strong>uygulama kullanıcıları</strong> arasında ölçülmesi amacıyla geliştirilmiş bağımsız bir platformdur. Amacımız, Türkiye genelindeki kullanıcıların oy eğilimlerini iller bazında şeffaf bir şekilde görebilmelerini sağlamaktır.</p>
-      <p class="muted">Bu uygulama resmî bir seçim anketi değildir, seçim sonucu tahmini yapmaz ve hiçbir siyasi parti, aday veya kurumla ilişkili değildir.</p>
+      <p>Seçim Anketi, siyasi tercihlerin yalnızca <strong>uygulama kullanıcıları</strong> arasında ölçülmesi amacıyla
+        geliştirilmiş bağımsız bir platformdur. Amacımız, Türkiye genelindeki kullanıcıların oy eğilimlerini iller
+        bazında şeffaf bir şekilde görebilmelerini sağlamaktır.</p>
+      <p class="muted">Bu uygulama resmî bir seçim anketi değildir, seçim sonucu tahmini yapmaz ve hiçbir siyasi parti,
+        aday veya kurumla ilişkili değildir.</p>
       <div class="notice">
-        <strong>Önemli uyarı:</strong> Bu sonuçlar yalnızca uygulama kullanıcılarının tercihidir; Türkiye geneli için bilimsel veya temsili bir anket değildir. Katılım gönüllüdür ve temsiliyet iddiası taşımaz.
+        <strong>Önemli uyarı:</strong> Bu sonuçlar yalnızca uygulama kullanıcılarının tercihidir; Türkiye geneli için
+        bilimsel veya temsili bir anket değildir. Katılım gönüllüdür ve temsiliyet iddiası taşımaz.
       </div>
     </section>
 
     <section>
       <h2>Nasıl çalışır?</h2>
       <div class="grid">
-        <div class="card"><div class="n">1</div><h3>Giriş yap</h3><p>Google veya Apple hesabınla ücretsiz giriş yaparsın. SMS, e-posta doğrulaması veya T.C. kimlik numarası istenmez.</p></div>
-        <div class="card"><div class="n">2</div><h3>Oy ver</h3><p>Her oylama döneminde (varsayılan 1 hafta) bir oy hakkın vardır. Tercihini tek dokunuşla seçersin.</p></div>
-        <div class="card"><div class="n">3</div><h3>Sonuçları gör</h3><p>Türkiye geneli ve il bazlı sonuçları harita ve grafiklerle canlı takip edersin.</p></div>
+        <div class="card">
+          <div class="n">1</div>
+          <h3>Giriş yap</h3>
+          <p>Google veya Apple hesabınla ücretsiz giriş yaparsın. SMS, e-posta doğrulaması veya T.C. kimlik numarası
+            istenmez.</p>
+        </div>
+        <div class="card">
+          <div class="n">2</div>
+          <h3>Oy ver</h3>
+          <p>Her oylama döneminde (varsayılan 1 hafta) bir oy hakkın vardır. Tercihini tek dokunuşla seçersin.</p>
+        </div>
+        <div class="card">
+          <div class="n">3</div>
+          <h3>Sonuçları gör</h3>
+          <p>Türkiye geneli ve il bazlı sonuçları harita ve grafiklerle canlı takip edersin.</p>
+        </div>
       </div>
     </section>
 
     <section>
       <h2>Gizlilik — oy tercihin kimliğinle eşleştirilemez</h2>
       <div class="privacy">
-        <p>Siyasi görüş, KVKK kapsamında özel nitelikli kişisel veridir. Bu nedenle sistemimiz <strong>teknik olarak</strong> şu şekilde tasarlanmıştır:</p>
+        <p>Siyasi görüş, KVKK kapsamında özel nitelikli kişisel veridir. Bu nedenle sistemimiz <strong>teknik
+            olarak</strong> şu şekilde tasarlanmıştır:</p>
         <ul style="margin: 12px 0 12px 20px;">
-          <li>Kimlik bilgileri (<code>voters</code>) ile oy kayıtları (<code>ballots</code>) tamamen ayrı tablolarda tutulur.</li>
+          <li>Kimlik bilgileri (<code>voters</code>) ile oy kayıtları (<code>ballots</code>) tamamen ayrı tablolarda
+            tutulur.</li>
           <li>Oy tablosunda <strong>voter_id yoktur</strong>, kimlik tarafına hiçbir foreign key bulunmaz.</li>
-          <li>Ham Google/Apple kimlik numarası ve cihaz kimliği saklanmaz; yalnızca sunucu sırrıyla HMAC-SHA256 hash'leri tutulur.</li>
+          <li>Ham Google/Apple kimlik numarası ve cihaz kimliği saklanmaz; yalnızca sunucu sırrıyla HMAC-SHA256
+            hash'leri tutulur.</li>
           <li>Oy zamanı yalnızca saat hassasiyetinde kaydedilir; hassas zaman damgası yoktur.</li>
           <li>E-postan, T.C. kimlik numaran veya konumun (GPS) istenmez veya saklanmaz.</li>
         </ul>
@@ -82,7 +260,8 @@
 
     <section>
       <h2>Erişim</h2>
-      <p>Uygulama iOS, Android ve web tarayıcı üzerinden kullanılabilir. Giriş yapmadan bu sayfayı okuyabilir, uygulamanın amacını ve gizlilik politikasını öğrenebilirsin.</p>
+      <p>Uygulama iOS, Android ve web tarayıcı üzerinden kullanılabilir. Giriş yapmadan bu sayfayı okuyabilir,
+        uygulamanın amacını ve gizlilik politikasını öğrenebilirsin.</p>
       <a class="store" href="/privacy.html">Gizlilik Politikasını Oku</a>
     </section>
   </main>
@@ -97,4 +276,5 @@
     </div>
   </footer>
 </body>
+
 </html>
